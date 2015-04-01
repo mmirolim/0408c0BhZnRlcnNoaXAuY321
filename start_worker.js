@@ -9,6 +9,8 @@ if(process.argv[2] != null){
 
 var worker = rateWorkerFactory.createWorker(config.workerConfig);
 
-worker.start([config.tube]);
+Array.isArray(config.tube) ? worker.start(config.tube) : worker.start([config.tube]);
+
+
 
 

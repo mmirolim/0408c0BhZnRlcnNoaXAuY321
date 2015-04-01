@@ -1,6 +1,7 @@
 var fork = require('child_process').fork;
 
-fork('./start_worker.js',['Worker 1']);
-fork('./start_worker.js',['Worker 2']);
-fork('./start_worker.js',['Worker 3']);
-fork('./start_worker.js',['Worker 4']);
+var num = process.argv[2] > 1 ? process.argv[2] : 2;
+
+for(var i = 0; i < num; i++){
+	fork('./start_worker.js',['Worker ' + i]);	
+}
