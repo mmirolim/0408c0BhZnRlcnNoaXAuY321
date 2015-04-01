@@ -2,7 +2,6 @@ var events = require('events');
 var util = require('util');
 var request = require('request');
 
-
 var fromParseRegex = /class="leftCol">1\.00&nbsp;<span class="uccResCde">([A-Za-z]*)<\/span>/i;
 var toParseRegex = /class="rightCol">(.*)&nbsp;<span class="uccResCde">([A-Za-z]*)<\/span>/i;
 
@@ -74,7 +73,6 @@ RateHandler.prototype.work = function(payload, callback){
 			fail(new Error('Cannot get exchange rate from xu.com: ' + from + ' to ' + to));
 			return;				
 		}
-
 	});
 }
 

@@ -29,7 +29,8 @@ Configure file for the module used by above scripts. Default is set as challenge
 Details description are as below
 
     {
-        workerConfig: { //Options used to configure a worker in start_worker.js and start_multi_workers.js
+        //Options used to configure a worker in start_worker.js and start_multi_workers.js
+        workerConfig: { 
             host: , //beanstalkd host
             port: , //beanstalkd port
             dbURI: , //database uri

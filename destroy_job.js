@@ -1,7 +1,6 @@
 var fivebeans = require('fivebeans');
 var config = require('./config.js');
 
-
 var client = new fivebeans.client(config.workerConfig.host, config.workerConfig.port);
 
 client.on('connect', function(){
