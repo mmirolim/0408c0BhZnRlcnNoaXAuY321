@@ -1,5 +1,11 @@
 #Exchange Rate Worker
 
+##Source
+
+All source codes of the worker is in `src/`
+
+The only support payload syntax by now is `"[from] [to]"`. Please follow if you prefer to seed jobs without my scripts.
+
 ##How to use
 
 Install dependencies by `npm install`
@@ -14,37 +20,41 @@ Script to start multiple processes of worker concurrently. The minimum number of
 
 **add_job.js peek_job.js destroy_job.js**
 
-Scripts to add, peek, destroy a job in beanstalkd server for easily testing the worker
+Assisstance scripts to add, peek, destroy a job in beanstalkd server for easily testing the worker: `node xxxx_job.js`
+Please note peek and destroy will only affect ready jobs
 
 **config.js**
 
 Configure file for the module used by above scripts. Default is set as challenge required.
+Details description are as below
 
     {
-    	workerConfig: {	//Options used to configure a worker in start_worker.js and start_multi_workers.js
-    		host: , //beanstalkd host
-    		port: , //beanstalkd port
-    		dbURI: , //database uri
-    		dbDocName: , //document name in database
-    		id: , //id to identity this worker (start_multi_workers.js will rewrite this value for each worker)
-    		maxSuccTrial: , //number of successful jobs to stop
-    		maxFailTrial: , //number of successful jobs to stop
-    		succDelay: , //second to delay job after successful handling
-    		failDelay:  //second to delay job after fail handling
-    	},
-    	tube: , //tube to start the 
-    
-    	//not used for worker; put here to add job for test
-    	jobConfig: {
-    		type: 'rate',
-    		priority: 0,
-    		delay: 0,
-    		ttr: 60,	
-    	},
-    	sampleJob: {
-    		from: 'HKD',
-    		to: 'USD'
-    	}
+        workerConfig: { //Options used to configure a worker in start_worker.js and start_multi_workers.js
+            host: , //beanstalkd host
+            port: , //beanstalkd port
+            dbURI: , //database uri
+            dbDocName: , //document name in database
+            id: , //id to identity this worker (start_multi_workers.js will rewrite this value for each worker)
+            maxSuccTrial: , //number of successful jobs to stop
+            maxFailTrial: , //number of fail jobs to stop
+            succDelay: , //seconds to delay job after successful handling
+            failDelay:  //seconds to delay job after fail handling
+        },
+        tube: , //tube to listen; string for single & array for multiple
+       
+        //Used for assisstence scripts only. Ignore if you are using other clients
+        jobConfig: { //job setting of beanstalkd used in add_job.js
+            type: ,
+            priority: ,
+            delay: ,
+            ttr: ,  
+        },
+        sampleJob: { //sample job to add used in add_job.js
+            from: ,
+            to: 
+        }
     }
-  
+
+
+ 
   
