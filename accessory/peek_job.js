@@ -1,11 +1,10 @@
 var fivebeans = require('fivebeans');
-var config = require('./config.js');
+var beanstalkd_config = require('../beanstalkd_config.js');
 
-
-var client = new fivebeans.client(config.workerConfig.host, config.workerConfig.port);
+var client = new fivebeans.client(beanstalkd_config.host, beanstalkd_config.port);
 
 client.on('connect', function(){
-	client.use(config.tube, function(err, tube) {
+	client.use(Array.isArray(beanstalkd_config.tube) ? beanstalkd_config.tube[0] : beanstalkd_config.tube, function(err, tube) {
 		if (err) throw err;
 
 		client.peek_ready(function(err, jobid, payload) {
