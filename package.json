@@ -2,7 +2,7 @@
   "name": "am9ic0BhZnRlcnNoaXAuY29t",
   "version": "0.0.0",
   "description": "",
-  "main": "src/rate_worker_factory.js",
+  "main": "src/exchange_rate_worker.js",
   "dependencies": {
     "fivebeans": "^1.1.1",
     "mongoose": "3.8",
