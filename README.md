@@ -9,7 +9,7 @@ The support job payload syntax by now is
       to: "to"
     }`
 
-Please follow if you prefer to seed jobs without my scripts. Otherwise, your jobs will be buried.
+Please follow if you prefer to seed jobs without my scripts. If your job cannot be parsed as a JSON, it will be buried.
 
 ##How to use
 
@@ -25,7 +25,7 @@ The default is set as the challenge required.
 
 Script to start a single worker. Start with command: `node start_worker.js [worker_name]`
 
-If `worker_name` is not specified, the default id is `Anonymous worker`
+If `worker_name` is not specified, the default name is `Anonymous worker`
 
 **start_multi_workers.js**
 
@@ -55,7 +55,7 @@ Succeed or failed attempt to handle an job will also publish `info` event.
 
 **config**
 
-`config/` contains the configuration file to set the worker's target database sourse and behaviors: number of attempts & delay intervals. The default is set as challenge required.
+`config/` contains the configuration file to set the worker's target database sourse and behaviors: number of attempts & job delay intervals. The default is set as challenge required.
 
 
 ##Accessory
